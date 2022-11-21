@@ -135,7 +135,7 @@ test("Passing the Valar argument prints the episode", () => {
   ]);
 });
 
-test("Passing the Valar argument prints the episode", () => {
+test("Passing the Valar argument prints empty array", () => {
   expect(
     searchFilter(
       [
