@@ -7,7 +7,7 @@ import searchFilter from "../utils/searchFilter";
 export default function EpisodesView(): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
 
-  const filteredEpisodes = searchFilter(episodes, searchBarText)
+  const filteredEpisodes = searchFilter(episodes, searchBarText);
 
   return (
     <>
@@ -16,10 +16,12 @@ export default function EpisodesView(): JSX.Element {
         searchBarText={searchBarText}
         setSearchBarText={setSearchBarText}
       />
-      <p>Showing {filteredEpisodes.length} out of {episodes.length}</p>
-        {filteredEpisodes.map((episode) => {
-          return <SingleEpisodeView key={episode.id} episode={episode} />;
-        })}
+      <p>
+        Showing {filteredEpisodes.length} out of {episodes.length}
+      </p>
+      {filteredEpisodes.map((episode) => {
+        return <SingleEpisodeView key={episode.id} episode={episode} />;
+      })}
     </>
   );
 }
