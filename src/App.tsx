@@ -6,7 +6,7 @@ function App(): JSX.Element {
     <>
       <AppHeader />
       <EpisodesView />
-      <hr/>
+      <hr />
       <Footer />
     </>
   );
