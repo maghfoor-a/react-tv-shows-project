@@ -9,9 +9,9 @@ function episodeCode(Episode: IEpisode): string {
     }
 
     if(Episode.number < 10) {
-        episodeCodeResult += `0${Episode.number}`
+        episodeCodeResult += `E0${Episode.number}`
     } else {
-        episodeCodeResult += Episode.number
+        episodeCodeResult += `E${Episode.number}`
     }
 
     
