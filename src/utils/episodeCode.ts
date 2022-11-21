@@ -1,4 +1,4 @@
-import { IEpisode } from "../epsidesInterface";
+import { IEpisode } from "../episodesInterface";
 
 function episodeCode(Episode: IEpisode): string {
     let episodeCodeResult = "S"

@@ -2,7 +2,7 @@
 import AppHeader from "./components/AppHeader";
 import EpisodesView
 
-from "./components/EpisodesView";
+from "./components/AllEpisodesView";
 function App(): JSX.Element {
   
   return (
