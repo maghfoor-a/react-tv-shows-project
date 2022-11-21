@@ -1,17 +1,12 @@
-
 import AppHeader from "./components/AppHeader";
-import EpisodesView
-
-from "./components/EpisodesView";
+import EpisodesView from "./components/AllEpisodesView";
 function App(): JSX.Element {
-  
   return (
-  <>
-  <AppHeader/>
-  <EpisodesView/>
-  </>
-
-  )
+    <>
+      <AppHeader />
+      <EpisodesView />
+    </>
+  );
 }
 
 export default App;
