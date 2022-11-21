@@ -1,5 +1,4 @@
 
-import episodes from './episodes.json';
 import AppHeader from "./components/AppHeader";
 import EpisodesView
 
