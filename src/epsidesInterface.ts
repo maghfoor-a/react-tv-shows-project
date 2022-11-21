@@ -15,5 +15,6 @@ export interface IEpisode {
       original: string;
     };
     summary: string;
-    _links: { self: { href: string } };
+    _links: { self: { href: string },
+    show: { href: string } };
   }
