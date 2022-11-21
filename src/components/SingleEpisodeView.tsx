@@ -1,5 +1,6 @@
 import episodeCode from "../utils/episodeCode";
 import { IEpisode } from "../episodesInterface";
+import { removePTags } from "../utils/removePTags";
 
 interface EpisodeProps {
   episode: IEpisode;
@@ -8,6 +9,7 @@ interface EpisodeProps {
 export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
   const episode = props.episode;
   const episodeCodeName = episodeCode(episode);
+  const cleanSummary = removePTags(episode);
 
   return (
     <div className="singleEpisode">
@@ -23,7 +25,7 @@ export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
         src={episode.image.medium}
         alt={episode.name}
       />
-      <p>{episode.summary}</p>
+      <p>{cleanSummary}</p>
     </div>
   );
 }
