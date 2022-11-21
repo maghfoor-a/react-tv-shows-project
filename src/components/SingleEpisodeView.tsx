@@ -1,6 +1,6 @@
 import episodeCode from "../utils/episodeCode";
 import { IEpisode } from "../episodesInterface";
-import {removePTags} from "../utils/removePTags"
+import { removePTags } from "../utils/removePTags";
 
 interface EpisodeProps {
   episode: IEpisode;
