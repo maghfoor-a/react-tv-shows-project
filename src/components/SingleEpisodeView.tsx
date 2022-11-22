@@ -9,7 +9,9 @@ interface EpisodeProps {
 export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
   const episode = props.episode;
   const episodeCodeName = episodeCode(episode);
-  const cleanSummary = removePTags(episode);
+  const cleanSummary =
+    episode.summary === null ? "SUMMARY NOT FOUND" : removePTags(episode);
+  console.log(episode.summary);
 
   return (
     <div className="singleEpisode">
@@ -20,12 +22,16 @@ export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
         </a>
       </h3>
       <h5>Rating: {episode.rating.average}</h5>
-      <img
-        className="episodeImg"
-        src={episode.image.medium}
-        alt={episode.name}
-      />
-      <p>{cleanSummary}</p>
+
+      {episode.image !== null && (
+        <img
+          className="episodeImg"
+          src={episode.image.medium}
+          alt={episode.name}
+        />
+      )}
+
+      <p>Summary: {cleanSummary}</p>
     </div>
   );
 }

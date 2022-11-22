@@ -10,10 +10,12 @@ export interface IEpisode {
   airstamp: string;
   rating: { average: number | null };
   runtime: number;
-  image: {
-    medium: string;
-    original: string;
-  };
-  summary: string;
+  image: Image | null;
+  summary: string | null;
   _links: { self: { href: string }; show: { href: string } };
+}
+
+interface Image {
+  medium: string;
+  original: string;
 }
