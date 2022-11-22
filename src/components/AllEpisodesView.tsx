@@ -19,7 +19,6 @@ export default function EpisodesView(): JSX.Element {
       setAllShows(jsonBody);
     };
     fetchAllShows();
-    
   }, []);
 
   useEffect(() => {
