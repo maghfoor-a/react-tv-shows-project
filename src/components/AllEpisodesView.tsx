@@ -1,4 +1,4 @@
-import episodes from "../episodes.json";
+import simpsonsEpisodes from "../simpsonsEpisodes.json";
 import SingleEpisodeView from "./SingleEpisodeView";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import searchFilter from "../utils/searchFilter";
 export default function EpisodesView(): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
 
-  const filteredEpisodes = searchFilter(episodes, searchBarText);
+  const filteredEpisodes = searchFilter(simpsonsEpisodes, searchBarText);
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function EpisodesView(): JSX.Element {
         setSearchBarText={setSearchBarText}
       />
       <p>
-        Showing {filteredEpisodes.length} out of {episodes.length}
+        Showing {filteredEpisodes.length} out of {simpsonsEpisodes.length}
       </p>
       {filteredEpisodes.map((episode) => {
         return <SingleEpisodeView key={episode.id} episode={episode} />;
