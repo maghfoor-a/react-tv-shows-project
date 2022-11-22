@@ -10,7 +10,7 @@ export default function EpisodesView(): JSX.Element {
 
   useEffect(() => {
     const fetchAllEpisodes = async () => {
-      const response = await fetch("https://api.tvmaze.com/shows/582/episodes");
+      const response = await fetch("https://api.tvmaze.com/shows/5/episodes");
       const jsonBody = await response.json();
       setAllEpisodes(jsonBody);
     };
