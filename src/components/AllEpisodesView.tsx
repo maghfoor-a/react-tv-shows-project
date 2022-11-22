@@ -14,11 +14,12 @@ export default function EpisodesView(): JSX.Element {
 
   useEffect(() => {
     const fetchAllShows = async () => {
-      const response = await fetch("http://api.tvmaze.com/shows?page=1");
+      const response = await fetch("https://api.tvmaze.com/shows?page=1");
       const jsonBody = await response.json();
       setAllShows(jsonBody);
     };
     fetchAllShows();
+    
   }, []);
 
   useEffect(() => {
