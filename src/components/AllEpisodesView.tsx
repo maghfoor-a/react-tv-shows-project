@@ -29,13 +29,13 @@ export default function EpisodesView(): JSX.Element {
       setAllEpisodes(jsonBody);
     };
     fetchAllEpisodes();
-  }, []);
+  }, [showID]);
 
   const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
 
   return (
     <>
-      <select onChange={(event) => console.log(event.target.value)}>
+      <select onChange={(event) => setShowID(Number(event.target.value))}>
         {allShows.map((show) => (
           <option value={show.id} key={show.id}>
             {show.name}
