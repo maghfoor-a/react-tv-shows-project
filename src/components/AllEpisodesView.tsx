@@ -1,5 +1,5 @@
 import episodes from "../episodes.json";
-import simpsonsEpisodes from "../simpsonsEpisodes.json"
+import simpsonsEpisodes from "../simpsonsEpisodes.json";
 import SingleEpisodeView from "./SingleEpisodeView";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
