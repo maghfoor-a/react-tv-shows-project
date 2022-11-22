@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import searchFilter from "../utils/searchFilter";
 import { IEpisode } from "../episodesInterface";
 import { IShow } from "../utils/AllShowsInterface";
+import sortAlphabetically from "../utils/sortAlphabetically";
 
 export default function EpisodesView(): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
@@ -33,10 +34,11 @@ export default function EpisodesView(): JSX.Element {
 
   const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
 
+  const sortedShows = sortAlphabetically(allShows);
   return (
     <>
       <select onChange={(event) => setShowID(Number(event.target.value))}>
-        {allShows.map((show) => (
+        {sortedShows.map((show) => (
           <option value={show.id} key={show.id}>
             {show.name}
           </option>
