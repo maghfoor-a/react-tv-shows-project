@@ -1,20 +1,17 @@
 import { IEpisode } from "../episodesInterface";
 
 export default function searchFilter(
-  episodes: IEpisode[] | undefined,
+  episodes: IEpisode[],
   searchBarText: string
 ): IEpisode[] | [] {
-  if (typeof episodes !== "undefined") {
-    return episodes.filter(
-      (episode) =>
-        episode.summary !== null &&
-        (episode.name
+  return episodes.filter(
+    (episode) =>
+      episode.name
+        .toLocaleLowerCase()
+        .includes(searchBarText.toLocaleLowerCase()) ||
+      (episode.summary !== null &&
+        episode.summary
           .toLocaleLowerCase()
-          .includes(searchBarText.toLocaleLowerCase()) ||
-          episode.summary
-            .toLocaleLowerCase()
-            .includes(searchBarText.toLocaleLowerCase()))
-    );
-  }
-  return [];
+          .includes(searchBarText.toLocaleLowerCase()))
+  );
 }
