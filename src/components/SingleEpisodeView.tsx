@@ -10,7 +10,7 @@ export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
   const episode = props.episode;
   const episodeCodeName = episodeCode(episode);
   const cleanSummary =
-    episode.summary === null ? "SUMMARY NOT FOUND" : removePTags(episode);
+    episode.summary === null ? "SUMMARY NOT FOUND" : removePTags(episode.summary);
 
   return (
     <div className="singleEpisode">

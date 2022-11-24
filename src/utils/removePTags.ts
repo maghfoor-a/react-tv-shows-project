@@ -1,7 +1,7 @@
 import { IEpisode } from "../episodesInterface";
+import { IShow } from "../AllShowsInterface";
 
-export function removePTags(episode: IEpisode): string {
-  const input = episode.summary;
+export function removePTags(input: string): string {
   if (input !== null && input.length > 0) {
     let output = input.replace(/<p>/g, "");
     output = output.replace(/<\/p>/g, "");
