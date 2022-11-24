@@ -1,5 +1,6 @@
 import SingleShowView from "./SingleShowView";
 import { IShow } from "../AllShowsInterface";
+import {sortAlphabetically} from "../utils/sortAlphabetically"
 
 interface AllShowsViewProps {
   allShows: IShow[];
@@ -9,11 +10,11 @@ interface AllShowsViewProps {
 }
 
 export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
-  const allShows = props.allShows;
+  const sortedShows1 = sortAlphabetically(props.allShows);
   return (
     <>
       <h1>ALL SHOWS</h1>
-      {allShows.map((show) => {
+      {sortedShows1.map((show) => {
         return (
           <SingleShowView
             key={show.id}
