@@ -6,6 +6,8 @@ import { seperateGenres } from "../utils/seperateGenres"
 
 interface ShowProps {
     show: IShow
+    setIsHome: React.Dispatch<React.SetStateAction<boolean>>
+    setShowID: React.Dispatch<React.SetStateAction<number>>
 }
 
 export default function SingleShowView(props: ShowProps): JSX.Element {
@@ -13,8 +15,16 @@ export default function SingleShowView(props: ShowProps): JSX.Element {
     const cleanShowSummary = removePTags(show.summary)
     const cleanGenres = seperateGenres(show.genres)
 
+    const handleClick = () => {
+        props.setIsHome(false)
+        props.setShowID(show.id)
+    }
+
+     
+    
+
     return (
-        <div className="SingleShowView">
+        <div className="SingleShowView" onClick={handleClick}>
             <h3>
                 <a href={show.url} target="_blank" rel="noopener noreferrer">{show.name}</a>
             </h3>

@@ -10,6 +10,7 @@ function App(): JSX.Element {
 
   const [allShows, setAllShows] = useState<IShow[] | []>([]);
   const [isHome, setIsHome] = useState<boolean>(true);
+  const [showID, setShowID] = useState<number>(1);
 
   useEffect(() => {
     const fetchAllShows = async () => {
@@ -24,7 +25,7 @@ function App(): JSX.Element {
   return (
     <>
       <AppHeader />
-      {isHome ? <AllShowsView allShows={allShows}/> : <EpisodesView allShows={allShows}/>}
+      {isHome ? <AllShowsView allShows={allShows} setIsHome={setIsHome} showID={showID} setShowID={setShowID}/> : <EpisodesView allShows={allShows} showID={showID} setShowID={setShowID}/>}
     </>
   );
 }
