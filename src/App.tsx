@@ -4,10 +4,7 @@ import AllShowsView from "./components/AllShowsView";
 import { useState, useEffect } from "react";
 import { IShow } from "./AllShowsInterface";
 
-
-
 function App(): JSX.Element {
-
   const [allShows, setAllShows] = useState<IShow[] | []>([]);
   const [isHome, setIsHome] = useState<boolean>(true);
   const [showID, setShowID] = useState<number>(1);
@@ -21,11 +18,23 @@ function App(): JSX.Element {
     fetchAllShows();
   }, []);
 
-
   return (
     <>
       <AppHeader />
-      {isHome ? <AllShowsView allShows={allShows} setIsHome={setIsHome} showID={showID} setShowID={setShowID}/> : <EpisodesView allShows={allShows} showID={showID} setShowID={setShowID}/>}
+      {isHome ? (
+        <AllShowsView
+          allShows={allShows}
+          setIsHome={setIsHome}
+          showID={showID}
+          setShowID={setShowID}
+        />
+      ) : (
+        <EpisodesView
+          allShows={allShows}
+          showID={showID}
+          setShowID={setShowID}
+        />
+      )}
     </>
   );
 }

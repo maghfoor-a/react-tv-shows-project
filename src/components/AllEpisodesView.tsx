@@ -7,17 +7,14 @@ import { IShow } from "../AllShowsInterface";
 import sortAlphabetically from "../utils/sortAlphabetically";
 
 interface AllShowsViewProps {
-  allShows: IShow[],
-  showID: number,
-  setShowID: React.Dispatch<React.SetStateAction<number>>
+  allShows: IShow[];
+  showID: number;
+  setShowID: React.Dispatch<React.SetStateAction<number>>;
 }
-
 
 export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
   const [allEpisodes, setAllEpisodes] = useState<IEpisode[] | []>([]);
-  
-
 
   useEffect(() => {
     const fetchAllEpisodes = async () => {
