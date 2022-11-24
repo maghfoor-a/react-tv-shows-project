@@ -1,7 +1,7 @@
 import AllShowsView from "./AllShowsView"
 import { IShow } from "../AllShowsInterface"
-import { isThrowStatement } from "typescript"
 import { removePTags } from "../utils/removePTags";
+import { seperateGenres } from "../utils/seperateGenres"
 
 
 interface ShowProps {
@@ -11,6 +11,7 @@ interface ShowProps {
 export default function SingleShowView(props: ShowProps): JSX.Element {
     const show = props.show
     const cleanShowSummary = removePTags(show.summary)
+    const cleanGenres = seperateGenres(show.genres)
 
     return (
         <div className="SingleShowView">
@@ -21,7 +22,7 @@ export default function SingleShowView(props: ShowProps): JSX.Element {
             <p>Summary: {cleanShowSummary}</p>
             <div className="ShowInfo">
                 <p>Rating: {show.rating.average}</p>
-                <p>Genres: {show.genres}</p>
+                <p>Genres: {cleanGenres}</p>
                 <p>Status: {show.status}</p>
                 <p>Avg Runtime: {show.averageRuntime}</p>
                 
