@@ -1,4 +1,3 @@
-import AllShowsView from "./AllShowsView";
 import { IShow } from "../AllShowsInterface";
 import { removePTags } from "../utils/removePTags";
 import { seperateGenres } from "../utils/seperateGenres";
