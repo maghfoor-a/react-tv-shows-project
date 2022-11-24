@@ -33,6 +33,7 @@ function App(): JSX.Element {
           allShows={allShows}
           showID={showID}
           setShowID={setShowID}
+          setIsHome={setIsHome}
         />
       )}
     </>
