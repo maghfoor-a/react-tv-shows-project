@@ -5,13 +5,13 @@ import searchFilter from "../utils/searchFilter";
 import { IEpisode } from "../episodesInterface";
 import { IShow } from "../AllShowsInterface";
 import sortAlphabetically from "../utils/sortAlphabetically";
-import { FaHome } from 'react-icons/fa';
+import { FaHome } from "react-icons/fa";
 
 interface AllShowsViewProps {
   allShows: IShow[];
   showID: number;
   setShowID: React.Dispatch<React.SetStateAction<number>>;
-  setIsHome: React.Dispatch<React.SetStateAction<boolean>>
+  setIsHome: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
@@ -34,8 +34,10 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
   const sortedShows = sortAlphabetically(props.allShows);
   return (
     <>
-      <select onChange={(event)=> props.setShowID(Number(event.target.value))}>
-          <option value="" disabled selected>Select your option</option>
+      <select onChange={(event) => props.setShowID(Number(event.target.value))}>
+        <option value="" disabled selected>
+          Select your option
+        </option>
         {sortedShows.map((show) => (
           <option value={show.id} key={show.id}>
             {show.name}
@@ -43,7 +45,7 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
         ))}
       </select>
       <h1>episodes (edit this)</h1>
-      <FaHome onClick={() => props.setIsHome(true)}/>
+      <FaHome onClick={() => props.setIsHome(true)} />
       <SearchBar
         searchBarText={searchBarText}
         setSearchBarText={setSearchBarText}
