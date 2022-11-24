@@ -3,41 +3,36 @@ import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
 import searchFilter from "../utils/searchFilter";
 import { IEpisode } from "../episodesInterface";
-import { IShow } from "../utils/AllShowsInterface";
+import { IShow } from "../AllShowsInterface";
 import sortAlphabetically from "../utils/sortAlphabetically";
 
-export default function EpisodesView(): JSX.Element {
+interface AllShowsViewProps {
+  allShows: IShow[];
+  showID: number;
+  setShowID: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
   const [allEpisodes, setAllEpisodes] = useState<IEpisode[] | []>([]);
-  const [allShows, setAllShows] = useState<IShow[] | []>([]);
-  const [showID, setShowID] = useState<number>(1);
-
-  useEffect(() => {
-    const fetchAllShows = async () => {
-      const response = await fetch("https://api.tvmaze.com/shows?page=1");
-      const jsonBody = await response.json();
-      setAllShows(jsonBody);
-    };
-    fetchAllShows();
-  }, []);
 
   useEffect(() => {
     const fetchAllEpisodes = async () => {
       const response = await fetch(
-        `https://api.tvmaze.com/shows/${showID}/episodes`
+        `https://api.tvmaze.com/shows/${props.showID}/episodes`
       );
       const jsonBody = await response.json();
       setAllEpisodes(jsonBody);
     };
     fetchAllEpisodes();
-  }, [showID]);
+  }, [props.showID]);
 
   const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
 
-  const sortedShows = sortAlphabetically(allShows);
+  const sortedShows = sortAlphabetically(props.allShows);
   return (
     <>
-      <select onChange={(event) => setShowID(Number(event.target.value))}>
+      <select onChange={(event) => props.setShowID(Number(event.target.value))}>
         {sortedShows.map((show) => (
           <option value={show.id} key={show.id}>
             {show.name}

@@ -1,4 +1,4 @@
-import { IShow } from "./AllShowsInterface";
+import { IShow } from "../AllShowsInterface";
 
 export default function sortAlphabetically(allShows: IShow[]): IShow[] {
   return allShows.sort((a, b) =>
