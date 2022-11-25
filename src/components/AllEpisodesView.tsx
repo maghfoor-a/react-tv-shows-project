@@ -31,6 +31,7 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
     fetchAllEpisodes();
   }, [props.showID]);
 
+  
   const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
 
   const sortedShows = sortAlphabetically(props.allShows);
