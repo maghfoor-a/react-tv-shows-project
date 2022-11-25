@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import searchFilter from "../utils/searchFilter";
 import { IEpisode } from "../episodesInterface";
 import { IShow } from "../AllShowsInterface";
-import {sortAlphabetically} from "../utils/sortAlphabetically";
+import { sortAlphabetically } from "../utils/sortAlphabetically";
 import { FaHome } from "react-icons/fa";
+import createSeasonsArray from "../utils/CreateSeasonsArray";
 
 interface AllShowsViewProps {
   allShows: IShow[];
@@ -17,6 +18,7 @@ interface AllShowsViewProps {
 export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
   const [allEpisodes, setAllEpisodes] = useState<IEpisode[] | []>([]);
+  const [seasonSelection, setSeasonSelection] = useState<number>();
 
   useEffect(() => {
     const fetchAllEpisodes = async () => {
@@ -29,11 +31,32 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
     fetchAllEpisodes();
   }, [props.showID]);
 
+  
   const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
 
   const sortedShows = sortAlphabetically(props.allShows);
+
+  const finalEpisodeIndex = allEpisodes.length - 1;
+
+  const finalEpisode = allEpisodes[finalEpisodeIndex];
+
+  const finalSeason = finalEpisode.season;
+
+  const seasonsArray = createSeasonsArray(finalSeason);
+
   return (
     <>
+      <select>
+        <option value="" disabled selected>
+          Select a season
+        </option>
+        {seasonsArray.map((element) => (
+          <option value={element} key={element}>
+            Season {element}
+          </option>
+        ))}
+      </select>
+
       <select onChange={(event) => props.setShowID(Number(event.target.value))}>
         <option value="" disabled selected>
           Select your option

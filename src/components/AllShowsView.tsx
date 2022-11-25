@@ -1,6 +1,6 @@
 import SingleShowView from "./SingleShowView";
 import { IShow } from "../AllShowsInterface";
-import {sortAlphabetically} from "../utils/sortAlphabetically"
+import { sortAlphabetically } from "../utils/sortAlphabetically";
 
 interface AllShowsViewProps {
   allShows: IShow[];
