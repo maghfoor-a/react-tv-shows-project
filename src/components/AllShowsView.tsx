@@ -40,16 +40,18 @@ export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
         episodeSearchBar={showSearchBar}
         setepisodeSearchBar={setShowSearchBar}
       />
-      {filteredShows.map((show) => {
-        return (
-          <SingleShowView
-            key={show.id}
-            show={show}
-            setIsHome={props.setIsHome}
-            setShowID={props.setShowID}
-          />
-        );
-      })}
+      <div className="AllShows">
+        {filteredShows.map((show) => {
+          return (
+            <SingleShowView
+              key={show.id}
+              show={show}
+              setIsHome={props.setIsHome}
+              setShowID={props.setShowID}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
