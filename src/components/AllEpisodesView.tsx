@@ -7,6 +7,7 @@ import { IShow } from "../AllShowsInterface";
 import { sortAlphabetically } from "../utils/sortAlphabetically";
 import { FaHome } from "react-icons/fa";
 import createSeasonsArray from "../utils/CreateSeasonsArray";
+import seasonFilter from "../utils/seasonFilter";
 
 interface AllShowsViewProps {
   allShows: IShow[];
@@ -18,7 +19,7 @@ interface AllShowsViewProps {
 export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
   const [searchBarText, setSearchBarText] = useState<string>("");
   const [allEpisodes, setAllEpisodes] = useState<IEpisode[] | []>([]);
-  const [seasonSelection, setSeasonSelection] = useState<number>();
+  const [seasonSelection, setSeasonSelection] = useState<number | "all">("all");
 
   useEffect(() => {
     const fetchAllEpisodes = async () => {
@@ -31,8 +32,9 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
     fetchAllEpisodes();
   }, [props.showID]);
 
-  
-  const filteredEpisodes = searchFilter(allEpisodes, searchBarText);
+  const seasonFilteredEps = seasonFilter(allEpisodes, seasonSelection);
+
+  const searchFilteredEps = searchFilter(seasonFilteredEps, searchBarText);
 
   const sortedShows = sortAlphabetically(props.allShows);
 
@@ -40,21 +42,30 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
 
   const finalEpisode = allEpisodes[finalEpisodeIndex];
 
-  const finalSeason = finalEpisode.season;
+  const seasonsArray =
+    allEpisodes.length > 0 ? createSeasonsArray(finalEpisode.season) : [];
 
-  const seasonsArray = createSeasonsArray(finalSeason);
+  const parseSeasonSelection = (eventValue: string): number | "all" => {
+    return eventValue === "all" ? "all" : Number(eventValue);
+  };
 
   return (
     <>
-      <select>
+      <select
+        onChange={(event) =>
+          setSeasonSelection(parseSeasonSelection(event.target.value))
+        }
+      >
         <option value="" disabled selected>
           Select a season
         </option>
-        {seasonsArray.map((element) => (
-          <option value={element} key={element}>
-            Season {element}
-          </option>
-        ))}
+        <option value="all">All Episodes</option>
+        {seasonsArray.length > 1 &&
+          seasonsArray.map((element) => (
+            <option value={element} key={element}>
+              Season {element}
+            </option>
+          ))}
       </select>
 
       <select onChange={(event) => props.setShowID(Number(event.target.value))}>
@@ -74,9 +85,9 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
         setSearchBarText={setSearchBarText}
       />
       <p>
-        Showing {filteredEpisodes.length} out of {allEpisodes.length}
+        Showing {searchFilteredEps.length} out of {allEpisodes.length}
       </p>
-      {filteredEpisodes.map((episode) => {
+      {searchFilteredEps.map((episode) => {
         return <SingleEpisodeView key={episode.id} episode={episode} />;
       })}
     </>
