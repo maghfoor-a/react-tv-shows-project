@@ -10,11 +10,26 @@ interface AllShowsViewProps {
 }
 
 export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
-  const sortedShows1 = sortAlphabetically(props.allShows);
+  const sortedShows = sortAlphabetically(props.allShows);
   return (
     <>
       <h1>ALL SHOWS</h1>
-      {sortedShows1.map((show) => {
+      <select
+        onChange={(event) => {
+          props.setShowID(Number(event.target.value));
+          props.setIsHome(false);
+        }}
+      >
+        <option value="" disabled selected>
+          Select A Show
+        </option>
+        {sortedShows.map((show) => (
+          <option value={show.id} key={show.id}>
+            {show.name}
+          </option>
+        ))}
+      </select>
+      {sortedShows.map((show) => {
         return (
           <SingleShowView
             key={show.id}
