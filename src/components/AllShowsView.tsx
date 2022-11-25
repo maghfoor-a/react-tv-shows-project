@@ -1,6 +1,9 @@
 import SingleShowView from "./SingleShowView";
 import { IShow } from "../AllShowsInterface";
 import { sortAlphabetically } from "../utils/sortAlphabetically";
+import { useState } from "react";
+import SearchBar from "./SearchBar";
+import showSearchFilter from "../utils/showSearchFilter";
 
 interface AllShowsViewProps {
   allShows: IShow[];
@@ -10,7 +13,11 @@ interface AllShowsViewProps {
 }
 
 export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
+  const [showSearchBar, setShowSearchBar] = useState<string>("");
+
   const sortedShows = sortAlphabetically(props.allShows);
+
+  const filteredShows = showSearchFilter(sortedShows, showSearchBar);
   return (
     <>
       <h1>ALL SHOWS</h1>
@@ -29,7 +36,11 @@ export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
           </option>
         ))}
       </select>
-      {sortedShows.map((show) => {
+      <SearchBar
+        episodeSearchBar={showSearchBar}
+        setepisodeSearchBar={setShowSearchBar}
+      />
+      {filteredShows.map((show) => {
         return (
           <SingleShowView
             key={show.id}
