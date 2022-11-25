@@ -1,6 +1,6 @@
 import { IEpisode } from "../episodesInterface";
 
-export default function searchFilter(
+export default function episodeSearchFilter(
   episodes: IEpisode[],
   searchBarText: string
 ): IEpisode[] | [] {

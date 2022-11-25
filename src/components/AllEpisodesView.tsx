@@ -1,7 +1,7 @@
 import SingleEpisodeView from "./SingleEpisodeView";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
-import searchFilter from "../utils/searchFilter";
+import episodeSearchFilter from "../utils/searchFilter";
 import { IEpisode } from "../episodesInterface";
 import { IShow } from "../AllShowsInterface";
 import { FaHome } from "react-icons/fa";
@@ -16,7 +16,7 @@ interface AllShowsViewProps {
 }
 
 export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
-  const [searchBarText, setSearchBarText] = useState<string>("");
+  const [episodeSearchBar, setepisodeSearchBar] = useState<string>("");
   const [allEpisodes, setAllEpisodes] = useState<IEpisode[] | []>([]);
   const [seasonSelection, setSeasonSelection] = useState<number | "all">("all");
 
@@ -33,7 +33,10 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
 
   const seasonFilteredEps = seasonFilter(allEpisodes, seasonSelection);
 
-  const searchFilteredEps = searchFilter(seasonFilteredEps, searchBarText);
+  const searchFilteredEps = episodeSearchFilter(
+    seasonFilteredEps,
+    episodeSearchBar
+  );
 
   const finalEpisodeIndex = allEpisodes.length - 1;
 
@@ -67,8 +70,8 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
       <h1>episodes (edit this)</h1>
       <FaHome onClick={() => props.setIsHome(true)} />
       <SearchBar
-        searchBarText={searchBarText}
-        setSearchBarText={setSearchBarText}
+        episodeSearchBar={episodeSearchBar}
+        setepisodeSearchBar={setepisodeSearchBar}
       />
       <p>
         Showing {searchFilteredEps.length} out of {allEpisodes.length}
