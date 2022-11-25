@@ -6,6 +6,7 @@ import { IEpisode } from "../episodesInterface";
 import { IShow } from "../AllShowsInterface";
 import {sortAlphabetically} from "../utils/sortAlphabetically";
 import { FaHome } from "react-icons/fa";
+import createSeasonsArray from "../utils/CreateSeasonsArray"
 
 interface AllShowsViewProps {
   allShows: IShow[];

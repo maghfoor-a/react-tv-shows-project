@@ -2,4 +2,12 @@
     border: 5px;
     border-color: black;
     background-color: lightgray;
+    cursor:pointer;
+}
+
+.SingleShowView{
+    border: 5px;
+    border-color: black;
+    background-color: lightgray;
+    cursor:pointer;
 }
