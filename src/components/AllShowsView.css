@@ -1,21 +1,20 @@
-.show-body{
-    display: flex;
-    flex-wrap: wrap;
-    border: 5px;
-    border-color: black;
-    background-color: lightgray;
-    cursor:pointer;
-    margin: 5px;
+.show-body {
+  display: flex;
+  flex-wrap: wrap;
+  border: 5px;
+  border-color: black;
+  background-color: lightgray;
+  cursor: pointer;
+  margin: 5px;
 }
 
 .AllShows {
-    display: flex;
-    max-width: 100%;
-    flex-wrap: wrap
-
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 .show-summary {
-    width: 60%;
-    margin: 10px;
-    text-align: justify;
+  width: 60%;
+  margin: 10px;
+  text-align: justify;
 }
