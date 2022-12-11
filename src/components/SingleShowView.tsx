@@ -20,22 +20,29 @@ export default function SingleShowView(props: ShowProps): JSX.Element {
 
   return (
     <div className="SingleShowView" onClick={handleClick}>
-      <h3 className="show-title">
+      <h3 className="ShowTitle">
         <a href={show.url} target="_blank" rel="noopener noreferrer">
           {show.name}
         </a>
       </h3>
-      <div className="show-body">
+      <div className="ShowImg">
         {show.image !== null && (
-          <img className="ShowImg" src={show.image.medium} alt={show.name} />
+          <img
+            src={show.image.medium}
+            alt={show.name}
+            width="240px"
+            height="340px"
+          />
         )}
-        <p className="show-summary">Summary: {cleanShowSummary}</p>
-        <div className="ShowInfo">
-          <p>Rating: {show.rating.average}</p>
-          <p>Genres: {cleanGenres}</p>
-          <p>Status: {show.status}</p>
-          <p>Avg Runtime: {show.averageRuntime}</p>
-        </div>
+      </div>
+      <div className="ShowSummary">
+        <p>Summary: {cleanShowSummary}</p>
+      </div>
+      <div className="ShowInfo">
+        <p>
+          <b>Rating:</b> {show.rating.average} <b>Genres:</b> {cleanGenres}{" "}
+          <b>Status:</b> {show.status} <b>Avg Runtime:</b> {show.averageRuntime}
+        </p>
       </div>
     </div>
   );

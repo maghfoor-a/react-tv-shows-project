@@ -1,20 +1,53 @@
-.show-body {
+body {
+  background-color: lightgrey;
+}
+
+.SingleShowView {
+  border-radius: 10px;
+  margin: 1rem;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content min-content min-content;
+  width: 40%;
+  padding-right: 10px;
+}
+
+.ShowTitle {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+.ShowImg {
+  grid-column-start: 1;
+  grid-column-end: 2;
   display: flex;
-  flex-wrap: wrap;
-  border: 5px;
-  border-color: black;
-  background-color: lightgray;
-  cursor: pointer;
-  margin: 5px;
+  justify-content: center;
+}
+
+.ShowInfo {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+.ShowSummary {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-align: left;
 }
 
 .AllShows {
   display: flex;
-  max-width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.show-summary {
-  width: 60%;
-  margin: 10px;
-  text-align: justify;
+
+.ShowSummary p {
+  margin-top: 0px;
+}
+
+.SearchShows {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
