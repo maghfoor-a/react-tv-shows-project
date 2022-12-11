@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "Arimo";
+  src: local("Arimo-Regular"),
+    url("../src/fonts/Arimo-Regular.ttf") format("truetype");
+}

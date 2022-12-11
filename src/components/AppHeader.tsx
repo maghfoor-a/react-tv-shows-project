@@ -1,3 +1,16 @@
+import "./AppHeader.css";
 export default function AppHeader(): JSX.Element {
-  return <h1>ZMDb: The only place to find TV show info online!</h1>;
+  return (
+    <>
+      <div className="MainTitle">
+        <h1
+          onClick={() =>
+            window.open("https://zmdb-official.netlify.app/", "_self")
+          }
+        >
+          ZMDb: Find Info About Your Favourite Show!
+        </h1>
+      </div>
+    </>
+  );
 }

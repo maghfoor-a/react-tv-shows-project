@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+.MainTitle {
+  background-color: brown;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(245, 242, 242);
+  padding: 0.1rem;
+  font-family: "Arimo";
+  cursor: pointer;
+}
+
+.MainTitle:hover {
+  color: black;
+}

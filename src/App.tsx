@@ -3,6 +3,16 @@ import EpisodesView from "./components/AllEpisodesView";
 import AllShowsView from "./components/AllShowsView";
 import { useState, useEffect } from "react";
 import { IShow } from "./AllShowsInterface";
+import "./App.css";
+
+//fonts
+import "../src/fonts/Arimo-Bold.ttf";
+import "../src/fonts/Arimo-BoldItalic.ttf";
+import "../src/fonts/Arimo-Italic.ttf";
+import "../src/fonts/Arimo-Medium.ttf";
+import "../src/fonts/Arimo-MediumItalic.ttf";
+import "../src/fonts/Arimo-Regular.ttf";
+import "../src/fonts/Arimo-SemiBold.ttf";
 
 function App(): JSX.Element {
   const [allShows, setAllShows] = useState<IShow[] | []>([]);
