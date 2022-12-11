@@ -29,7 +29,7 @@ export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
           }}
         >
           <option value="" disabled selected>
-            Select A Show
+            A-Z
           </option>
           {sortedShows.map((show) => (
             <option value={show.id} key={show.id}>
