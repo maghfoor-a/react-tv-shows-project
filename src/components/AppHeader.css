@@ -7,10 +7,10 @@ body {
   font-size: 1.5rem;
   color: rgb(245, 242, 242);
   padding: 0.1rem;
-  font-family: "Arimo";
   cursor: pointer;
 }
 
 .MainTitle:hover {
   color: black;
+  background-color: rgb(100, 18, 18);
 }

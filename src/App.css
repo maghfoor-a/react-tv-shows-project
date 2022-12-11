@@ -3,3 +3,6 @@
   src: local("Arimo-Regular"),
     url("../src/fonts/Arimo-Regular.ttf") format("truetype");
 }
+body {
+  font-family: "Arimo";
+}

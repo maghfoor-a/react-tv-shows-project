@@ -4,6 +4,7 @@ import { sortAlphabetically } from "../utils/sortAlphabetically";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import showSearchFilter from "../utils/showSearchFilter";
+import "./AllShowsView.css";
 
 interface AllShowsViewProps {
   allShows: IShow[];
