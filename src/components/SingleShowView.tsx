@@ -28,6 +28,7 @@ export default function SingleShowView(props: ShowProps): JSX.Element {
       <div className="ShowImg">
         {show.image !== null && (
           <img
+            className="imageShow"
             src={show.image.medium}
             alt={show.name}
             width="240px"
