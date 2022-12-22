@@ -7,6 +7,7 @@ import { IShow } from "../AllShowsInterface";
 import { FaHome } from "react-icons/fa";
 import createSeasonsArray from "../utils/CreateSeasonsArray";
 import seasonFilter from "../utils/seasonFilter";
+import "./AllEpisodesView.css";
 
 interface AllShowsViewProps {
   allShows: IShow[];
@@ -51,34 +52,47 @@ export default function EpisodesView(props: AllShowsViewProps): JSX.Element {
 
   return (
     <>
-      <select
-        onChange={(event) =>
-          setSeasonSelection(parseSeasonSelection(event.target.value))
-        }
-      >
-        <option value="" disabled selected>
-          Select a season
-        </option>
-        <option value="all">All Episodes</option>
-        {seasonsArray.length > 1 &&
-          seasonsArray.map((element) => (
-            <option value={element} key={element}>
-              Season {element}
-            </option>
-          ))}
-      </select>
-      <h1>episodes (edit this)</h1>
-      <FaHome onClick={() => props.setIsHome(true)} />
-      <SearchBar
-        episodeSearchBar={episodeSearchBar}
-        setepisodeSearchBar={setepisodeSearchBar}
-      />
-      <p>
-        Showing {searchFilteredEps.length} out of {allEpisodes.length}
-      </p>
-      {searchFilteredEps.map((episode) => {
-        return <SingleEpisodeView key={episode.id} episode={episode} />;
-      })}
+      <div className="EpNavigate">
+        <select
+          className="select"
+          onChange={(event) =>
+            setSeasonSelection(parseSeasonSelection(event.target.value))
+          }
+        >
+          <option value="" disabled selected>
+            Select a season
+          </option>
+          <option value="all">All Episodes</option>
+          {seasonsArray.length > 1 &&
+            seasonsArray.map((element) => (
+              <option value={element} key={element}>
+                Season {element}
+              </option>
+            ))}
+        </select>
+        <FaHome
+          className="home"
+          color="brown"
+          onClick={() => props.setIsHome(true)}
+        />
+        <div className="EpSearchBar">
+          <SearchBar
+            episodeSearchBar={episodeSearchBar}
+            setepisodeSearchBar={setepisodeSearchBar}
+          />
+        </div>
+      </div>
+      <div className="RegularText">
+        <h1>Episodes</h1>
+        <p>
+          Showing {searchFilteredEps.length} out of {allEpisodes.length}
+        </p>
+      </div>
+      <div className="AllEpsiodes">
+        {searchFilteredEps.map((episode) => {
+          return <SingleEpisodeView key={episode.id} episode={episode} />;
+        })}
+      </div>
     </>
   );
 }

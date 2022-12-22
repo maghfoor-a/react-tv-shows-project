@@ -16,23 +16,19 @@ export default function SingleEpisodeView(props: EpisodeProps): JSX.Element {
 
   return (
     <div className="singleEpisode">
-      <h3>
+      <h3 className="EpTitle">
         {episodeCodeName}:{" "}
         <a href={episode.url} target="_blank" rel="noopener noreferrer">
           {episode.name}
         </a>
       </h3>
-      <h5>Rating: {episode.rating.average}</h5>
 
       {episode.image !== null && (
-        <img
-          className="episodeImg"
-          src={episode.image.medium}
-          alt={episode.name}
-        />
+        <img className="EpImg" src={episode.image.medium} alt={episode.name} />
       )}
 
-      <p>Summary: {cleanSummary}</p>
+      <h5 className="EpRating">Rating: {episode.rating.average}</h5>
+      <p className="EpSummary">Summary: {cleanSummary}</p>
     </div>
   );
 }
