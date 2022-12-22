@@ -61,6 +61,7 @@
 .select {
   grid-area: select;
   margin-right: 2rem;
+  border-radius: 15px;
 }
 
 .EpSearchBar {

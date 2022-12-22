@@ -23,6 +23,7 @@ export default function AllShowsView(props: AllShowsViewProps): JSX.Element {
     <>
       <div className="SearchShows">
         <select
+          className="selectShows"
           onChange={(event) => {
             props.setShowID(Number(event.target.value));
             props.setIsHome(false);
